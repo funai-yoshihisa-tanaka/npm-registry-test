@@ -56,19 +56,24 @@ docker compose up -d
     docker compose exec filtered bash
     ```
 
-2. コンテナ内で、プライベートレジストリに**存在しない**パッケージ (husky@9.1.6) をインストールします。  
+2. プライベートレジストリにログインします。
+    ``` txt
+    root@xxxxxxxxxxxx:/app# npm login --registry=https://registry.funaisoken.dpdns.org/repository/npm-all/
+    ```
+
+3. コンテナ内で、プライベートレジストリに**存在しない**パッケージ (husky@9.1.6) をインストールします。  
     ``` txt
     root@xxxxxxxxxxxx:/app# npm install husky@9.1.6
     ```
 
    \=\> **\[期待される結果\]** プライベートレジストリにパッケージが存在しないため、404 Not Found のようなエラーが発生し、**インストールが失敗する**。  
-3. 次に、プライベートレジストリに**存在する**パッケージ (husky@9.1.7) をインストールします。  
+4. 次に、プライベートレジストリに**存在する**パッケージ (husky@9.1.7) をインストールします。  
     ``` txt
     root@xxxxxxxxxxxx:/app# npm install husky@9.1.7
     ```
 
    \=\> **\[期待される結果\]** プライベートレジストリからパッケージがダウンロードされ、**インストールが成功する**。  
-4. 確認が終わったら、exitコマンドでコンテナから抜けます。
+5. 確認が終わったら、exitコマンドでコンテナから抜けます。
     ``` txt  
     root@xxxxxxxxxxxx:/app# exit
     ```
