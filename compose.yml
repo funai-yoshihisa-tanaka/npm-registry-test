@@ -1,0 +1,14 @@
+services:
+  filtered:
+    image: node:22
+    volumes:
+      - ./filtered:/app
+    working_dir: /app
+    command: sleep infinity
+
+  non-filtered:
+    image: node:22
+    volumes:
+      - ./non-filtered:/app
+    working_dir: /app
+    command: sleep infinity
